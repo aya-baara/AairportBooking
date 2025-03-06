@@ -9,6 +9,7 @@ namespace AirportBooking.models
 {
     public class Flight
     {
+        private static int _nextId = 1;
         public int FlightId { get; set; } 
         public string Airline { get; set; }  
         public string DepartureCountry { get; set; }
@@ -23,6 +24,22 @@ namespace AirportBooking.models
         public Flight()
         {
             ClassPrices = new Dictionary<ClassType, decimal>();
+        }
+
+        public Flight(string airline, string departureCountry, string destinationCountry,
+                      string departureAirport, string arrivalAirport, DateTime departureDate, DateTime arrivalDate,
+                      int availableSeats, Dictionary<ClassType, decimal> classPrices)
+        {
+            FlightId = _nextId;
+            Airline = airline;
+            DepartureCountry = departureCountry;
+            DestinationCountry = destinationCountry;
+            DepartureAirport = departureAirport;
+            ArrivalAirport = arrivalAirport;
+            DepartureDate = departureDate;
+            ArrivalDate = arrivalDate;
+            AvailableSeats = availableSeats;
+            ClassPrices = classPrices ?? new Dictionary<ClassType, decimal>(); 
         }
 
 
