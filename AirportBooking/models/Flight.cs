@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AirportBooking.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,9 +17,16 @@ namespace AirportBooking.models
         public string ArrivalAirport { get; set; }
         public DateTime DepartureDate { get; set; }
         public DateTime ArrivalDate { get; set; }
-        public int AvailableSeats { get; set; }  
-        public decimal EconomyPrice { get; set; }
-        public decimal BusinessPrice { get; set; }
-        public decimal FirstClassPrice { get; set; }
+        public int AvailableSeats { get; set; }
+        public Dictionary<ClassType, decimal> ClassPrices { get; set; }
+
+        public Flight()
+        {
+            ClassPrices = new Dictionary<ClassType, decimal>();
+        }
+
+
+
+
     }
 }
