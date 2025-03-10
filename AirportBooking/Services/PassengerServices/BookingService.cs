@@ -1,6 +1,7 @@
 ﻿using AirportBooking.Comparer;
 using AirportBooking.Data;
 using AirportBooking.Enums;
+using AirportBooking.Exceptions;
 using AirportBooking.models;
 using System;
 using System.Collections.Generic;
@@ -13,9 +14,19 @@ namespace AirportBooking.Services.PassengerServices
     class BookingService
     {
         public void BookFlight(Passenger passenger,Flight flight, ClassType classType) {
+
+            if (flight.AvailableSeats <= 0) {
+                throw new InvalidBookingException("No Availble seats !");
+            }
+            if (DateTime.Today >= flight.DepartureDate.Date)
+            {
+                throw new InvalidBookingException("Booking is not allowed for past or today's flights.");
+            }
+
             DataStore.Bookings.Add(new Booking(
                     passenger.Id, flight.FlightId, classType, flight.ClassPrices.GetValueOrDefault(classType,0), DateTime.Now
                 ));
+            flight.AvailableSeats--;
 
         
         }
