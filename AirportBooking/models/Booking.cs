@@ -9,8 +9,7 @@ namespace AirportBooking.models
 {
     public class Booking
     {
-        private static int _nextBookingId = 1;
-        public int BookingId { get; set; }  
+       
         public int PassengerId { get; set; } 
         public int FlightId { get; set; }  
         public ClassType ClassType { get; set; }  
@@ -19,7 +18,7 @@ namespace AirportBooking.models
 
         public Booking(int passengerId, int flightId, ClassType classType, decimal price, DateTime bookingDate)
         {
-            BookingId = _nextBookingId++;
+            
             PassengerId = passengerId;
             FlightId = flightId;
             ClassType = classType;
