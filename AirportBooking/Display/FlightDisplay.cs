@@ -13,6 +13,7 @@ namespace AirportBooking.Display
         {
             return $"""
         Flight Details =>
+        ________________________________________________
         Flight ID: {flight.FlightId}
         Airline: {flight.Airline}
         From: {flight.DepartureCountry} ({flight.DepartureAirport})
@@ -22,11 +23,22 @@ namespace AirportBooking.Display
         Available Seats: {flight.AvailableSeats}
         
         Ticket Prices:
-        - Economy: ${flight.EconomyPrice}
-        - Business: ${flight.BusinessPrice}
-        - First Class: ${flight.FirstClassPrice}
+        {GetFlightClassPricesDetails(flight)}
+        ________________________________________________
         """;
         }
 
+        public static string GetFlightClassPricesDetails(Flight flight)
+        {
+            StringBuilder s = new StringBuilder();
+            foreach(var cp in flight.ClassPrices)
+            {
+                s.Append($" {cp.Key}  : {cp.Value} \n");
+            }
+            return s.ToString();
+
+        }
+
     }
+    
 }
