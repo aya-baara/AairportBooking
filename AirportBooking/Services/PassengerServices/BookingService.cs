@@ -36,6 +36,29 @@ namespace AirportBooking.Services.PassengerServices
             return DataStore.Bookings.Where(booking => booking.PassengerId == passenger.Id).ToList();
         }
 
-       
+        public bool ModifyBooking(Passenger passenger,Booking newBooking)
+        {
+            BookingComparer bComparer = new BookingComparer();
+            Booking booking = DataStore.Bookings
+                                .FirstOrDefault(book => bComparer.Equals(book, newBooking));
+            if (booking == null)
+            {
+                return false;
+            }
+            if (newBooking.BookingDate != default(DateTime))
+            {
+                booking.BookingDate = newBooking.BookingDate;
+            }
+
+            if (Enum.IsDefined(typeof(ClassType), newBooking.ClassType) && newBooking.ClassType != default)
+            {
+                Flight flight = DataStore.flights.SingleOrDefault(flight => flight.FlightId == newBooking.FlightId);
+                booking.ClassType = newBooking.ClassType;
+                booking.Price = flight.ClassPrices.GetValueOrDefault(newBooking.ClassType);
+
+            }
+
+            return true;
+        }
     }   
 }
