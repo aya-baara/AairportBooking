@@ -19,15 +19,24 @@ namespace AirportBooking.Data
             using (var reader = new StreamReader(filePath))
             using (var csv = new CsvReader(reader, config))
             {
-                // Apply FlightMap only if T is Flight
+                // Apply FlightMap ONLY if T is Flight
                 if (typeof(T) == typeof(Flight))
                 {
                     csv.Context.RegisterClassMap<FlightMap>();
+                }
+                else if (typeof(T) == typeof(Passenger))
+                {
+                    csv.Context.RegisterClassMap<PassengerMap>();
+                }
+                else if (typeof(T) == typeof(Booking))
+                {
+                    csv.Context.RegisterClassMap<BookingMap>();
                 }
 
                 return csv.GetRecords<T>().ToList();
             }
         }
+
 
         public static void WriteToFile<T>(List<T> records, string filePath)
         {
@@ -39,11 +48,18 @@ namespace AirportBooking.Data
                 {
                     csv.Context.RegisterClassMap<FlightMap>();
                 }
+                else if (typeof(T) == typeof(Passenger))
+                {
+                    csv.Context.RegisterClassMap<PassengerMap>();
+                }
+                else if (typeof(T) == typeof(Booking))
+                {
+                    csv.Context.RegisterClassMap<BookingMap>();
+                }
 
                 csv.WriteRecords(records);
             }
         }
-
 
     }
 
