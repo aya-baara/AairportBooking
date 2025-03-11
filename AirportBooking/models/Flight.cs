@@ -42,16 +42,16 @@ namespace AirportBooking.models
         [Range(1, 300, ErrorMessage = "Available seats must be between 1 and 300.")]
         public int AvailableSeats { get; set; }
 
-        public Dictionary<ClassType, decimal> ClassPrices { get; set; }
+        public Dictionary<SeatClass, decimal> ClassPrices { get; set; }
 
         public Flight()
         {
-            ClassPrices = new Dictionary<ClassType, decimal>();
+            ClassPrices = new Dictionary<SeatClass, decimal>();
         }
 
         public Flight(string airline, string departureCountry, string destinationCountry,
                       string departureAirport, string arrivalAirport, DateTime departureDate, DateTime arrivalDate,
-                      int availableSeats, Dictionary<ClassType, decimal> classPrices)
+                      int availableSeats, Dictionary<SeatClass, decimal> classPrices)
         {
             FlightId = _nextId;
             Airline = airline;
@@ -62,7 +62,7 @@ namespace AirportBooking.models
             DepartureDate = departureDate;
             ArrivalDate = arrivalDate;
             AvailableSeats = availableSeats;
-            ClassPrices = classPrices ?? new Dictionary<ClassType, decimal>(); 
+            ClassPrices = classPrices ?? new Dictionary<SeatClass, decimal>(); 
         }
 
 

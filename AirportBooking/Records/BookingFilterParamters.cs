@@ -12,7 +12,7 @@ namespace AirportBooking.Records
     public record BookingFilterParamters(
         int? PassengerId = null ,
         int? FlightId = null ,
-        ClassType? ClassType = null ,
+        SeatClass? ClassType = null ,
         decimal? Price = null ,
         DateTime? BookingDate = null ,
         string? DepartureCountry = null,

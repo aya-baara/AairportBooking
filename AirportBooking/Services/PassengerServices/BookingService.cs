@@ -13,7 +13,7 @@ namespace AirportBooking.Services.PassengerServices
 {
     class BookingService
     {
-        public void BookFlight(Passenger passenger,Flight flight, ClassType classType) {
+        public void BookFlight(Passenger passenger,Flight flight, SeatClass classType) {
 
             if (flight.AvailableSeats <= 0) {
                 throw new InvalidBookingException("No Availble seats !");
@@ -61,7 +61,7 @@ namespace AirportBooking.Services.PassengerServices
                 booking.BookingDate = newBooking.BookingDate;
             }
 
-            if (Enum.IsDefined(typeof(ClassType), newBooking.ClassType) && newBooking.ClassType != default)
+            if (Enum.IsDefined(typeof(SeatClass), newBooking.ClassType) && newBooking.ClassType != default)
             {
                 Flight flight = DataStore.flights.SingleOrDefault(flight => flight.FlightId == newBooking.FlightId);
                 booking.ClassType = newBooking.ClassType;

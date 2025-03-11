@@ -12,11 +12,11 @@ namespace AirportBooking.models
        
         public int PassengerId { get; set; } 
         public int FlightId { get; set; }  
-        public ClassType ClassType { get; set; }  
+        public SeatClass ClassType { get; set; }  
         public decimal Price { get; set; }  
         public DateTime BookingDate { get; set; }
 
-        public Booking(int passengerId, int flightId, ClassType classType, decimal price, DateTime bookingDate)
+        public Booking(int passengerId, int flightId, SeatClass classType, decimal price, DateTime bookingDate)
         {
             
             PassengerId = passengerId;
