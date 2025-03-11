@@ -71,5 +71,11 @@ namespace AirportBooking.Services.PassengerServices
 
             return true;
         }
+
+        public List<Flight> ViewAvailbleFlights()
+        {
+            return DataStore.flights.Where(flight => flight.AvailableSeats > 0 && flight.DepartureDate< DateTime.Today).ToList();
+           
+        }
     }   
 }
