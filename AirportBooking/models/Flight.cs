@@ -44,9 +44,32 @@ namespace AirportBooking.models
 
         public Dictionary<SeatClass, decimal> ClassPrices { get; set; }
 
+        public decimal BusinessPrice
+        {
+            get => ClassPrices.ContainsKey(SeatClass.Business) ? ClassPrices[SeatClass.Business] : 0;
+            set => ClassPrices[SeatClass.Business] = value;
+        }
+
+        public decimal EconomyPrice
+        {
+            get => ClassPrices.ContainsKey(SeatClass.Economy) ? ClassPrices[SeatClass.Economy] : 0;
+            set => ClassPrices[SeatClass.Economy] = value;
+        }
+
+        public decimal FirstClassPrice
+        {
+            get => ClassPrices.ContainsKey(SeatClass.FirstClass) ? ClassPrices[SeatClass.FirstClass] : 0;
+            set => ClassPrices[SeatClass.FirstClass] = value;
+        }
+
         public Flight()
         {
-            ClassPrices = new Dictionary<SeatClass, decimal>();
+            ClassPrices = new Dictionary<SeatClass, decimal>
+            {
+                { SeatClass.Economy, 0 },
+                { SeatClass.Business, 0 },
+                { SeatClass.FirstClass, 0 }
+            };
         }
 
         public Flight(string airline, string departureCountry, string destinationCountry,
