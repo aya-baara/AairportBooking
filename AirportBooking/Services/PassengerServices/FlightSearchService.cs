@@ -1,12 +1,7 @@
 ﻿using AirportBooking.Data;
 using AirportBooking.models;
 using AirportBooking.Records;
-using System;
-using System.Collections.Generic;
-using System.Diagnostics;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace AirportBooking.Services.PassengerServices
 {

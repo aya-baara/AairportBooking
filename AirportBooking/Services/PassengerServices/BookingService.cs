@@ -3,11 +3,7 @@ using AirportBooking.Data;
 using AirportBooking.Enums;
 using AirportBooking.Exceptions;
 using AirportBooking.models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace AirportBooking.Services.PassengerServices
 {
