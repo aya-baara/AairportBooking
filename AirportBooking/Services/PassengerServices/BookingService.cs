@@ -23,6 +23,11 @@ namespace AirportBooking.Services.PassengerServices
                 throw new InvalidBookingException("Booking is not allowed for past or today's flights.");
             }
 
+            if(DataStore.Bookings.SingleOrDefault(booking=> booking.PassengerId == passenger.Id &&booking.FlightId ==flight.FlightId)!= null)
+            {
+                throw new InvalidBookingException("You already booked the flight.");
+            }
+
             DataStore.Bookings.Add(new Booking(
                     passenger.Id, flight.FlightId, classType, flight.ClassPrices.GetValueOrDefault(classType,0), DateTime.Now
                 ));
@@ -55,10 +60,6 @@ namespace AirportBooking.Services.PassengerServices
             if (booking == null)
             {
                 return false;
-            }
-            if (newBooking.BookingDate != default(DateTime))
-            {
-                booking.BookingDate = newBooking.BookingDate;
             }
 
             if (Enum.IsDefined(typeof(SeatClass), newBooking.ClassType) && newBooking.ClassType != default)
