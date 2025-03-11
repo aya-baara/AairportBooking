@@ -25,5 +25,6 @@ namespace AirportBooking.models
             Price = price;
             BookingDate = bookingDate;
         }
+        public Booking() { }
     }
 }

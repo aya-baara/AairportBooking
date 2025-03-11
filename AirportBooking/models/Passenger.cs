@@ -20,5 +20,6 @@ namespace AirportBooking.models
             Email = email;
             PhoneNumber = phoneNumber;
         }
+        public Passenger() { }
     }
 }
