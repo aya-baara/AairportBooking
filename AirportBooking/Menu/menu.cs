@@ -44,7 +44,7 @@ namespace AirportBooking.Menu
                 Console.WriteLine("Passenger ID does not exist. Exiting...");
                 return; // Exit if ID doesn't exist
             }
-            PassengerMenuHelper menuHelper = new PassengerMenuHelper(passengerId);
+            PassengerMenuHelper passengerMenuHelper = new PassengerMenuHelper(passengerId);
 
             while (true)
             {
@@ -63,24 +63,25 @@ namespace AirportBooking.Menu
                 switch (choice)
                 {
                     case "1":
-                        menuHelper.BookFlight();
+                        passengerMenuHelper.BookFlight();
                         break;
                     case "2":
-                        menuHelper.ModifyBooking();
+                        passengerMenuHelper.ModifyBooking();
                         break;
                     case "3":
-                        menuHelper.CancelBooking();
+                        passengerMenuHelper.CancelBooking();
                         break;
                     case "4":
-                        menuHelper.ViewBookings();
+                        passengerMenuHelper.ViewBookings();
                         break;
                     case "5":
-                        menuHelper.ViewAvailbleFlights();
+                        passengerMenuHelper.ViewAvailbleFlights();
                         break;
                     case "6":
-                        menuHelper.SearchFlights();
+                        passengerMenuHelper.SearchFlights();
                         break;
                     case "0":
+                        passengerMenuHelper.writeBookingsToFile();
                         return;
                     default:
                         Console.WriteLine("Invalid option. Returning to main menu.");
@@ -93,67 +94,37 @@ namespace AirportBooking.Menu
 
         private void ManagerMenu()
         {
-            Console.WriteLine("Welcome Manager! What would you like to do?");
-            Console.WriteLine("1. Filter Bookings");
-            Console.WriteLine("2. Batch Flight Upload");
-            Console.Write("Please enter your choice: ");
-            string choice = Console.ReadLine();
-
-            switch (choice)
+            ManagerMenuHelper managerMenuHelper = new ManagerMenuHelper();
+            while (true)
             {
-                case "1":
-                    FilterBookings();
-                    break;
-                case "2":
-                    BatchFlightUpload();
-                    break;
-                default:
-                    Console.WriteLine("Invalid option. Returning to main menu.");
-                    break;
+                Console.WriteLine("Welcome Manager! What would you like to do?");
+                Console.WriteLine("1. Filter Bookings");
+                Console.WriteLine("2. Batch Flight Upload");
+                Console.WriteLine("3. Get Flight validation");
+                Console.Write("Please enter your choice: ");
+                string choice = Console.ReadLine();
+
+                switch (choice)
+                {
+                    case "1":
+                        managerMenuHelper.FilterBookings();
+                        break;
+                    case "2":
+                        managerMenuHelper.BatchFlightUpload();
+                        break;
+                    case "3":
+                        managerMenuHelper.GetValidation();
+                        break;
+                    case "0":
+                        return;
+                    default:
+                        Console.WriteLine("Invalid option. Returning to main menu.");
+                        break;
+                }
             }
         }
 
-        private void BookFlight()
-        {
-            // Implement the logic for booking a flight
-            Console.WriteLine("Booking a flight...");
-        }
 
-        private void ModifyBooking()
-        {
-            // Implement the logic for modifying a booking
-            Console.WriteLine("Modifying a booking...");
-        }
-
-        private void CancelBooking()
-        {
-            // Implement the logic for canceling a booking
-            Console.WriteLine("Canceling a booking...");
-        }
-
-        private void ViewBookings()
-        {
-            // Implement the logic for viewing passenger bookings
-            Console.WriteLine("Viewing bookings...");
-        }
-
-        private void FilterBookings()
-        {
-            // Implement the logic for filtering bookings
-            Console.WriteLine("Filtering bookings...");
-        }
-
-        private void BatchFlightUpload()
-        {
-            // Implement the logic for uploading flights in bulk via CSV
-            Console.WriteLine("Uploading flights in bulk...");
-        }
-
-        public static void Main(string[] args)
-        {
-            Menu menu = new Menu();
-            menu.DisplayMenu();
-        }
     }
 
 }

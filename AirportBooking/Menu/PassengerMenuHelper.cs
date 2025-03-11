@@ -345,6 +345,10 @@ namespace AirportBooking.Menu
             }
         }
 
+        public void writeBookingsToFile()
+        {
+            CsvFileHelper.WriteToFile(DataStore.Bookings, "C:\\Users\\hp\\source\\repos\\AirportBooking\\AirportBooking\\bookings.csv");
+        }
 
     }
 
