@@ -1,6 +1,5 @@
 ﻿using AirportBooking.models;
 using CsvHelper.Configuration;
-using AirportBooking.Enums;
 
 
 namespace AirportBooking.Data
