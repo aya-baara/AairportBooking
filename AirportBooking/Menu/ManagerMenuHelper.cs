@@ -1,4 +1,5 @@
-﻿using AirportBooking.Enums;
+﻿using AirportBooking.Data;
+using AirportBooking.Enums;
 using AirportBooking.models;
 using AirportBooking.Records;
 using AirportBooking.Services.ManagerServices;
@@ -11,7 +12,10 @@ namespace AirportBooking.Menu
         BookingSearchService bookingSearchService = new BookingSearchService();
         public void BatchFlightUpload()
         {
-            var errors = BatchAndValidateService.ReadAndValidate("C:\\Users\\hp\\source\\repos\\AirportBooking\\AirportBooking\\flights.csv");
+            string basePath = AppDomain.CurrentDomain.BaseDirectory;
+            string projectRoot = Path.GetFullPath(Path.Combine(basePath, @"..\..\..\"));
+
+            var errors = BatchAndValidateService.ReadAndValidate(Path.Combine(projectRoot, "flights.csv"));
             if (errors.Count == 0)
             {
                 Console.WriteLine("No errors Found");
