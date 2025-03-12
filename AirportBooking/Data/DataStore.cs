@@ -13,9 +13,12 @@ namespace AirportBooking.Data
 
         public static void ReadData()
         {
-            passengers = CsvFileHelper.ReadFromFile<Passenger>("C:\\Users\\hp\\source\\repos\\AirportBooking\\AirportBooking\\passengers.csv");
-            flights = CsvFileHelper.ReadFromFile<Flight>("C:\\Users\\hp\\source\\repos\\AirportBooking\\AirportBooking\\flights.csv");
-            Bookings= CsvFileHelper.ReadFromFile<Booking>("C:\\Users\\hp\\source\\repos\\AirportBooking\\AirportBooking\\bookings.csv");
+            string basePath = AppDomain.CurrentDomain.BaseDirectory;
+            string projectRoot = Path.GetFullPath(Path.Combine(basePath, @"..\..\..\"));
+
+            passengers = CsvFileHelper.ReadFromFile<Passenger>(Path.Combine(projectRoot, "passengers.csv"));
+            flights = CsvFileHelper.ReadFromFile<Flight>(Path.Combine(projectRoot, "flights.csv"));
+            Bookings = CsvFileHelper.ReadFromFile<Booking>(Path.Combine(projectRoot, "bookings.csv"));
         }
 
     }
