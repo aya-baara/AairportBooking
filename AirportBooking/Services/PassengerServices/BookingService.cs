@@ -9,7 +9,7 @@ namespace AirportBooking.Services.PassengerServices
 {
     class BookingService
     {
-        public void BookFlight(Passenger passenger,Flight flight, SeatClass classType) {
+        public void BookFlight(Passenger passenger,Flight flight, SeatClass seatClass) {
 
             if (flight.AvailableSeats <= 0) {
                 throw new InvalidBookingException("No Availble seats !");
@@ -25,7 +25,7 @@ namespace AirportBooking.Services.PassengerServices
             }
 
             DataStore.Bookings.Add(new Booking(
-                    passenger.Id, flight.FlightId, classType, flight.ClassPrices.GetValueOrDefault(classType,0), DateTime.Now
+                    passenger.Id, flight.FlightId, seatClass, flight.ClassPrices.GetValueOrDefault(seatClass,(int)SeatClass.Economy), DateTime.Now
                 ));
             flight.AvailableSeats--;
 
