@@ -20,9 +20,7 @@ namespace AirportBooking.Comparer
 
             int bookingIdHashCode = obj.FlightId.GetHashCode();
             int passengerIdHashCode = obj.PassengerId.GetHashCode();
-
-            // Combine them using XOR (^) or addition
-            return bookingIdHashCode ^ passengerIdHashCode;
+            return HashCode.Combine(bookingIdHashCode, passengerIdHashCode);
         }
     }
 }
