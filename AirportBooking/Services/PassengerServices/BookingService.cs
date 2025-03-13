@@ -58,7 +58,7 @@ namespace AirportBooking.Services.PassengerServices
                 throw new InvalidOperationException("Flight not found.");
             }
 
-            if (Enum.IsDefined(typeof(SeatClass), newBooking.ClassType) && newBooking.ClassType != default)
+            if (Enum.IsDefined(typeof(SeatClass), newBooking.ClassType))
             {
                 Flight flight = DataStore.Flights.SingleOrDefault(flight => flight.FlightId == newBooking.FlightId);
                 booking.ClassType = newBooking.ClassType;
