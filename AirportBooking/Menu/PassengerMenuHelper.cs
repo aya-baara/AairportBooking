@@ -18,7 +18,16 @@ namespace AirportBooking.Menu
 
         public PassengerMenuHelper(int passengerId)
         {
-            passenger = DataStore.Passengers.SingleOrDefault(pass => pass.Id == passengerId);
+            try 
+            {
+                passenger = DataStore.Passengers.SingleOrDefault(pass => pass.Id == passengerId);
+            }
+            catch(Exception e)
+            {
+                Console.WriteLine(e.Message);
+
+            }
+            
         }
 
         BookingService bookingService = new BookingService();
