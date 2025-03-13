@@ -5,9 +5,9 @@ namespace AirportBooking.Data
 {
     public static class DataStore
     {
-        public static List<Passenger> passengers = new List<Passenger>();
+        public static List<Passenger> Passengers = new List<Passenger>();
 
-        public static List<Flight> flights = new List<Flight>();
+        public static List<Flight> Flights = new List<Flight>();
 
         public static List<Booking> Bookings = new List<Booking>();
 
@@ -16,8 +16,8 @@ namespace AirportBooking.Data
             string basePath = AppDomain.CurrentDomain.BaseDirectory;
             string projectRoot = Path.GetFullPath(Path.Combine(basePath, @"..\..\..\"));
 
-            passengers = CsvFileHelper.ReadFromFile<Passenger>(Path.Combine(projectRoot, "passengers.csv"));
-            flights = CsvFileHelper.ReadFromFile<Flight>(Path.Combine(projectRoot, "flights.csv"));
+            Passengers = CsvFileHelper.ReadFromFile<Passenger>(Path.Combine(projectRoot, "passengers.csv"));
+            Flights = CsvFileHelper.ReadFromFile<Flight>(Path.Combine(projectRoot, "flights.csv"));
             Bookings = CsvFileHelper.ReadFromFile<Booking>(Path.Combine(projectRoot, "bookings.csv"));
         }
 

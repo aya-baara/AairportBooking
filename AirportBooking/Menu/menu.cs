@@ -39,7 +39,7 @@ namespace AirportBooking.Menu
             Console.Write("Enter your Passenger ID: ");
             int passengerId = int.Parse(Console.ReadLine());
 
-            if (DataStore.passengers.SingleOrDefault(pass=>pass.Id==passengerId)==null)
+            if (DataStore.Passengers.SingleOrDefault(pass=>pass.Id==passengerId)==null)
             {
                 Console.WriteLine("Passenger ID does not exist. Exiting...");
                 return; // Exit if ID doesn't exist

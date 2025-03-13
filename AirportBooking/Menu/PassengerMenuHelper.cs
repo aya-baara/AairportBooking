@@ -19,7 +19,7 @@ namespace AirportBooking.Menu
 
         public PassengerMenuHelper(int passengerId)
         {
-            passenger = DataStore.passengers.SingleOrDefault(pass => pass.Id == passengerId);
+            passenger = DataStore.Passengers.SingleOrDefault(pass => pass.Id == passengerId);
         }
 
         BookingService bookingService = new BookingService();
@@ -35,7 +35,7 @@ namespace AirportBooking.Menu
                 return false;
             }
 
-            Flight flight = DataStore.flights.SingleOrDefault(f => f.FlightId == flightId);
+            Flight flight = DataStore.Flights.SingleOrDefault(f => f.FlightId == flightId);
             if (flight == null)
             {
                 Console.WriteLine("Invalid Flight ID. Flight not exist");
@@ -103,7 +103,7 @@ namespace AirportBooking.Menu
                 Console.WriteLine("Invalid Flight ID. Please enter a valid integer.");
                 return;
             }
-            Flight flight = DataStore.flights.SingleOrDefault(f => f.FlightId == flightId);
+            Flight flight = DataStore.Flights.SingleOrDefault(f => f.FlightId == flightId);
             if (flight == null)
             {
                 Console.WriteLine("Invalid Flight ID. Flight not exist");
@@ -153,7 +153,7 @@ namespace AirportBooking.Menu
                 return; // Exit if the input is not a valid integer
             }
 
-            Flight flight = DataStore.flights.SingleOrDefault(f => f.FlightId == flightId);
+            Flight flight = DataStore.Flights.SingleOrDefault(f => f.FlightId == flightId);
             if (flight == null)
             {
                 Console.WriteLine("Invalid Flight ID. Flight not exist");

@@ -9,7 +9,7 @@ namespace AirportBooking.Services.PassengerServices
     {
         public List<Flight> SearchFlights(FlightSearchParameters flightSearchParameters)
         {
-            IEnumerable<Flight> query = DataStore.flights;
+            IEnumerable<Flight> query = DataStore.Flights;
 
             if (!string.IsNullOrEmpty(flightSearchParameters.Airline))
             {

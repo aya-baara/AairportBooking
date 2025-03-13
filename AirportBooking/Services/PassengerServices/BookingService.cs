@@ -60,7 +60,7 @@ namespace AirportBooking.Services.PassengerServices
 
             if (Enum.IsDefined(typeof(SeatClass), newBooking.ClassType) && newBooking.ClassType != default)
             {
-                Flight flight = DataStore.flights.SingleOrDefault(flight => flight.FlightId == newBooking.FlightId);
+                Flight flight = DataStore.Flights.SingleOrDefault(flight => flight.FlightId == newBooking.FlightId);
                 booking.ClassType = newBooking.ClassType;
                 booking.Price = flight.ClassPrices.GetValueOrDefault(newBooking.ClassType);
 
@@ -71,7 +71,7 @@ namespace AirportBooking.Services.PassengerServices
 
         public List<Flight> ViewAvailbleFlights()
         {
-            return DataStore.flights.Where(flight => flight.AvailableSeats > 0 && flight.DepartureDate> DateTime.Today).ToList();
+            return DataStore.Flights.Where(flight => flight.AvailableSeats > 0 && flight.DepartureDate> DateTime.Today).ToList();
            
         }
     }   

@@ -13,7 +13,7 @@ namespace AirportBooking.Services.ManagerServices
 
             
             var query = from booking in DataStore.Bookings
-                        join flight in DataStore.flights on booking.FlightId equals flight.FlightId
+                        join flight in DataStore.Flights on booking.FlightId equals flight.FlightId
                         select new { booking, flight };
 
             
