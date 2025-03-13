@@ -32,13 +32,13 @@ namespace AirportBooking.Services.PassengerServices
         
         }
 
-        public bool CancelBooking(Passenger passenger, Flight flight)
+        public void CancelBooking(Passenger passenger, Flight flight)
         {
             var booking= DataStore.Bookings.FirstOrDefault(booking => booking.PassengerId == passenger.Id && booking.FlightId==flight.FlightId);
             if (booking == null)
-                return false; // Booking not found
+                throw new InvalidOperationException();
 
-            return DataStore.Bookings.Remove(booking);
+            DataStore.Bookings.Remove(booking);
                   
 
         }

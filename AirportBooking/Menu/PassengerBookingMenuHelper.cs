@@ -123,9 +123,17 @@ namespace AirportBooking.Menu
 
             if (confirmation.ToLower() == "y")
             {
+                try 
+                {
+                    bookingService.CancelBooking(passenger, flight);
+                    Console.WriteLine("Booking cancelled successfully.");
+                }
+                catch (InvalidOperationException e)
+                {
+                    Console.WriteLine(e.Message);
 
-                bookingService.CancelBooking(passenger, flight);
-                Console.WriteLine("Booking cancelled successfully.");
+                }
+
             }
             else
             {
