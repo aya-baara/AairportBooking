@@ -1,5 +1,4 @@
-﻿
-using AirportBooking.models;
+﻿using AirportBooking.models;
 using CsvHelper.Configuration;
 
 
@@ -16,7 +15,4 @@ namespace AirportBooking.Data
             Map(m => m.BookingDate).Index(4).TypeConverterOption.Format("yyyy-MM-ddTHH:mm:ss");
         }
     }
-
-
-
 }
