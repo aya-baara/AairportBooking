@@ -1,5 +1,4 @@
-﻿
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 
 namespace AirportBooking.Attributes
@@ -13,12 +12,9 @@ namespace AirportBooking.Attributes
 
         protected override ValidationResult IsValid(object value, ValidationContext validationContext)
         {
-            if (value is DateTime dateTime)
+            if (value is DateTime dateTime && dateTime < DateTime.Now)
             {
-                if (dateTime < DateTime.Now)
-                {
                     return new ValidationResult(ErrorMessage);
-                }
             }
             return ValidationResult.Success;
         }
