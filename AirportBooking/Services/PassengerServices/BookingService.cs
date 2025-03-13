@@ -60,7 +60,7 @@ namespace AirportBooking.Services.PassengerServices
 
             if (Enum.IsDefined(typeof(SeatClass), newBooking.ClassType))
             {
-                Flight flight = DataStore.Flights.SingleOrDefault(flight => flight.FlightId == newBooking.FlightId);
+                Flight flight = DataStore.Flights.Single(flight => flight.FlightId == newBooking.FlightId);
                 booking.ClassType = newBooking.ClassType;
                 booking.Price = flight.ClassPrices.GetValueOrDefault(newBooking.ClassType);
 
