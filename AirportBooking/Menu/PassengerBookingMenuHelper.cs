@@ -135,7 +135,7 @@ namespace AirportBooking.Menu
 
         public void ViewBookings()
         {
-            List<Booking> bookings = bookingService.ViewPersonalBooking(passenger);
+            List<Booking> bookings = bookingService.ViewPersonalBookings(passenger);
 
             if (bookings.Count == 0)
             {

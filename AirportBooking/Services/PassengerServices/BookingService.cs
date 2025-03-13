@@ -43,7 +43,7 @@ namespace AirportBooking.Services.PassengerServices
 
         }
 
-        public List<Booking>ViewPersonalBooking(Passenger passenger)
+        public List<Booking> ViewPersonalBookings(Passenger passenger)
         {
             return DataStore.Bookings.Where(booking => booking.PassengerId == passenger.Id).ToList();
         }
