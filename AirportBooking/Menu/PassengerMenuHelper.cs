@@ -14,8 +14,7 @@ namespace AirportBooking.Menu
     class PassengerMenuHelper
     {
         public int PassengerId { get; init; }
-
-         Passenger passenger;
+        Passenger passenger;
 
         public PassengerMenuHelper(int passengerId)
         {
