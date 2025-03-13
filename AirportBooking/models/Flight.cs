@@ -72,7 +72,7 @@ namespace AirportBooking.models
                       string departureAirport, string arrivalAirport, DateTime departureDate, DateTime arrivalDate,
                       int availableSeats, Dictionary<SeatClass, decimal> classPrices)
         {
-            FlightId = _nextId;
+            FlightId = _nextId++;
             Airline = airline;
             DepartureCountry = departureCountry;
             DestinationCountry = destinationCountry;
