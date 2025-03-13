@@ -31,17 +31,7 @@ namespace AirportBooking.Services
 
                 foreach (var attribute in property.GetCustomAttributes<ValidationAttribute>())
                 {
-                    if (attribute is RequiredAttribute)
-                        rules.Add("Required");
-
-                    if (attribute is RangeAttribute range)
-                        rules.Add($"Range: {range.Minimum} - {range.Maximum}");
-
-                    if (attribute is DataTypeAttribute dataType)
-                        rules.Add($"Type: {dataType.DataType}");
-
-                    if (attribute is FutureDateAttribute)
-                        rules.Add("Must be a future date");
+                    rules.Add(attribute.ErrorMessage);
                 }
 
                 if (rules.Count > 0)
