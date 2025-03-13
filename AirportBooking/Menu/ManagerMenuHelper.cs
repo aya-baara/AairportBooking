@@ -15,7 +15,7 @@ namespace AirportBooking.Menu
             string basePath = AppDomain.CurrentDomain.BaseDirectory;
             string projectRoot = Path.GetFullPath(Path.Combine(basePath, @"..\..\..\"));
 
-            var errors = BatchAndValidateService.ReadAndValidate(Path.Combine(projectRoot, "flights.csv"));
+            var errors = FlightBatchValidatorService.ReadAndValidate(Path.Combine(projectRoot, "flights.csv"));
             if (errors.Count == 0)
             {
                 Console.WriteLine("No errors Found");
@@ -193,7 +193,7 @@ namespace AirportBooking.Menu
 
         public void GetValidation()
         {
-            var flightValidationRules = BatchAndValidateService.GetValidationFlightRules();
+            var flightValidationRules = FlightBatchValidatorService.GetValidationFlightRules();
 
             Console.WriteLine("Flight Model Validation Rules:");
             foreach (var rule in flightValidationRules)

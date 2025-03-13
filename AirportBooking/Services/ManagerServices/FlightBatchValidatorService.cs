@@ -4,7 +4,7 @@ using AirportBooking.models;
 
 namespace AirportBooking.Services.ManagerServices
 {
-    class BatchAndValidateService
+    class FlightBatchValidatorService
     {
         public static Dictionary<string, List<string>> GetValidationFlightRules()
         {
