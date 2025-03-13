@@ -213,9 +213,13 @@ namespace AirportBooking.Menu
                 newBooking.PassengerId = bookingToModify.PassengerId;
                 newBooking.ClassType = classType;
 
-
-                bookingService.ModifyBooking(passenger, newBooking);
-                Console.WriteLine("Booking modified successfully.");
+                try {
+                    bookingService.ModifyBooking(passenger, newBooking);
+                    Console.WriteLine("Booking modified successfully.");
+                }
+                catch (InvalidOperationException e) {
+                    Console.WriteLine(e.Message);
+                }
             }
             else
             {
