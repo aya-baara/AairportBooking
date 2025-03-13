@@ -14,11 +14,11 @@ namespace AirportBooking.Data
         public static void ReadData()
         {
             string basePath = AppDomain.CurrentDomain.BaseDirectory;
-            string projectRoot = Path.GetFullPath(Path.Combine(basePath, @"..\..\..\"));
+            string projectRoot = Path.GetFullPath(Path.Combine(basePath, FilePaths.BaseRelativePath));
 
-            Passengers = CsvFileHelper.ReadFromFile<Passenger>(Path.Combine(projectRoot, "passengers.csv"));
-            Flights = CsvFileHelper.ReadFromFile<Flight>(Path.Combine(projectRoot, "flights.csv"));
-            Bookings = CsvFileHelper.ReadFromFile<Booking>(Path.Combine(projectRoot, "bookings.csv"));
+            Passengers = CsvFileHelper.ReadFromFile<Passenger>(Path.Combine(projectRoot, FilePaths.PassengersFile));
+            Flights = CsvFileHelper.ReadFromFile<Flight>(Path.Combine(projectRoot, FilePaths.FlightsFile));
+            Bookings = CsvFileHelper.ReadFromFile<Booking>(Path.Combine(projectRoot, FilePaths.BookingsFile));
         }
 
     }

@@ -6,7 +6,10 @@ namespace AirportBooking.Menu
     {
         public static void writeBookingsToFile()
         {
-            CsvFileHelper.WriteToFile(DataStore.Bookings, "C:\\Users\\hp\\source\\repos\\AirportBooking\\AirportBooking\\bookings.csv");
+            string basePath = AppDomain.CurrentDomain.BaseDirectory;
+            string projectRoot = Path.GetFullPath(Path.Combine(basePath, FilePaths.BaseRelativePath));
+
+            CsvFileHelper.WriteToFile(DataStore.Bookings, Path.Combine(projectRoot, FilePaths.BookingsFile));
         }
     }
 }

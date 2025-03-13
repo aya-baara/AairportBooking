@@ -13,9 +13,9 @@ namespace AirportBooking.Menu
         public void BatchFlightUpload()
         {
             string basePath = AppDomain.CurrentDomain.BaseDirectory;
-            string projectRoot = Path.GetFullPath(Path.Combine(basePath, @"..\..\..\"));
+            string projectRoot = Path.GetFullPath(Path.Combine(basePath, FilePaths.BaseRelativePath)); ;
 
-            var errors = FlightBatchValidatorService.ReadAndValidate(Path.Combine(projectRoot, "flights.csv"));
+            var errors = FlightBatchValidatorService.ReadAndValidate(Path.Combine(projectRoot, FilePaths.FlightsFile));
             if (errors.Count == 0)
             {
                 Console.WriteLine("No errors Found");
