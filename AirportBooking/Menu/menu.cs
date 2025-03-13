@@ -7,8 +7,6 @@ namespace AirportBooking.Menu
 
     public class Menu
     {
-        
-
         public void DisplayMenu()
         {
             DataStore.ReadData();
@@ -36,61 +34,62 @@ namespace AirportBooking.Menu
 
         private void PassengerMenu()
         {
-            Console.Write("Enter your Passenger ID: ");
-            int passengerId = int.Parse(Console.ReadLine());
+            while (true) {
+                Console.Write("Enter your Passenger ID: ");
+                int passengerId = int.Parse(Console.ReadLine());
 
-            if (DataStore.Passengers.SingleOrDefault(pass=>pass.Id==passengerId)==null)
-            {
-                Console.WriteLine("Passenger ID does not exist. Exiting...");
-                return; // Exit if ID doesn't exist
-            }
-            PassengerBookingMenuHelper passengerBookingMenuHelper = new PassengerBookingMenuHelper(passengerId);
-            PassengerFlightSearchMenuHelper passengerFlightSearchMenuHelper = new PassengerFlightSearchMenuHelper(passengerId);
-
-            while (true)
-            {
-                Console.WriteLine($"Welcome What would you like to do?");
-                Console.WriteLine("1. Book a Flight");
-                Console.WriteLine("2. Modify a Booking");
-                Console.WriteLine("3. Cancel a Booking");
-                Console.WriteLine("4. View My Bookings");
-                Console.WriteLine("5. View availble flights");
-                Console.WriteLine("6. Search specific flight");
-                Console.WriteLine("0. exit");
-                Console.Write("Please enter your choice: ");
-                string choice = Console.ReadLine();
-
-
-                switch (choice)
+                if (!DataStore.Passengers.Any(p => p.Id == passengerId))
                 {
-                    case "1":
-                        passengerBookingMenuHelper.BookFlight();
-                        break;
-                    case "2":
-                        passengerBookingMenuHelper.ModifyBooking();
-                        break;
-                    case "3":
-                        passengerBookingMenuHelper.CancelBooking();
-                        break;
-                    case "4":
-                        passengerBookingMenuHelper.ViewBookings();
-                        break;
-                    case "5":
-                        passengerBookingMenuHelper.ViewAvailbleFlights();
-                        break;
-                    case "6":
-                        passengerFlightSearchMenuHelper.SearchFlights();
-                        break;
-                    case "0":
-                        passengerBookingMenuHelper.writeBookingsToFile();
-                        return;
-                    default:
-                        Console.WriteLine("Invalid option. Returning to main menu.");
-                        break;
+                    Console.WriteLine("Passenger ID does not exist. Exiting...");
                 }
+                else
+                {
+                    PassengerBookingMenuHelper passengerBookingMenuHelper = new PassengerBookingMenuHelper(passengerId);
+                    PassengerFlightSearchMenuHelper passengerFlightSearchMenuHelper = new PassengerFlightSearchMenuHelper(passengerId);
 
+                    while (true)
+                    {
+                        Console.WriteLine($"Welcome What would you like to do?");
+                        Console.WriteLine("1. Book a Flight");
+                        Console.WriteLine("2. Modify a Booking");
+                        Console.WriteLine("3. Cancel a Booking");
+                        Console.WriteLine("4. View My Bookings");
+                        Console.WriteLine("5. View availble flights");
+                        Console.WriteLine("6. Search specific flight");
+                        Console.WriteLine("0. exit");
+                        Console.Write("Please enter your choice: ");
+                        string choice = Console.ReadLine();
+
+                        switch (choice)
+                        {
+                            case "1":
+                                passengerBookingMenuHelper.BookFlight();
+                                break;
+                            case "2":
+                                passengerBookingMenuHelper.ModifyBooking();
+                                break;
+                            case "3":
+                                passengerBookingMenuHelper.CancelBooking();
+                                break;
+                            case "4":
+                                passengerBookingMenuHelper.ViewBookings();
+                                break;
+                            case "5":
+                                passengerBookingMenuHelper.ViewAvailbleFlights();
+                                break;
+                            case "6":
+                                passengerFlightSearchMenuHelper.SearchFlights();
+                                break;
+                            case "0":
+                                FileWriterHelper.writeBookingsToFile();
+                                return;
+                            default:
+                                Console.WriteLine("Invalid option. Returning to main menu.");
+                                break;
+                        }
+                    }
+                }
             }
-            
         }
 
         private void ManagerMenu()
