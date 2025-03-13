@@ -10,7 +10,7 @@ namespace AirportBooking.Comparer
             if (x == null || y == null)
                 return false;
 
-            return (x.FlightId== y.FlightId) && (x.PassengerId == y.PassengerId);
+            return x.FlightId == y.FlightId && x.PassengerId == y.PassengerId;
         }
 
         int IEqualityComparer<Booking>.GetHashCode(Booking obj)
