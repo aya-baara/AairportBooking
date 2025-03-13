@@ -23,15 +23,6 @@ namespace AirportBooking.Data
                 {
                     csv.Context.RegisterClassMap<FlightMap>();
                 }
-                else if (typeof(T) == typeof(Passenger))
-                {
-                    csv.Context.RegisterClassMap<PassengerMap>();
-                }
-                else if (typeof(T) == typeof(Booking))
-                {
-                    csv.Context.RegisterClassMap<BookingMap>();
-                }
-
                 return csv.GetRecords<T>().ToList();
             }
         }
@@ -47,15 +38,6 @@ namespace AirportBooking.Data
                 {
                     csv.Context.RegisterClassMap<FlightMap>();
                 }
-                else if (typeof(T) == typeof(Passenger))
-                {
-                    csv.Context.RegisterClassMap<PassengerMap>();
-                }
-                else if (typeof(T) == typeof(Booking))
-                {
-                    csv.Context.RegisterClassMap<BookingMap>();
-                }
-
                 csv.WriteRecords(records);
             }
         }
