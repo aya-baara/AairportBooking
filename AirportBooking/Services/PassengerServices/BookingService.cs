@@ -48,14 +48,14 @@ namespace AirportBooking.Services.PassengerServices
             return DataStore.Bookings.Where(booking => booking.PassengerId == passenger.Id).ToList();
         }
 
-        public bool ModifyBooking(Passenger passenger,Booking newBooking)
+        public void ModifyBooking(Passenger passenger,Booking newBooking)
         {
             BookingComparer bComparer = new BookingComparer();
             Booking booking = DataStore.Bookings
                                 .FirstOrDefault(book => bComparer.Equals(book, newBooking));
             if (booking == null)
             {
-                return false;
+                throw new InvalidOperationException("Flight not found.");
             }
 
             if (Enum.IsDefined(typeof(SeatClass), newBooking.ClassType) && newBooking.ClassType != default)
@@ -65,8 +65,6 @@ namespace AirportBooking.Services.PassengerServices
                 booking.Price = flight.ClassPrices.GetValueOrDefault(newBooking.ClassType);
 
             }
-
-            return true;
         }
 
         public List<Flight> ViewAvailbleFlights()
