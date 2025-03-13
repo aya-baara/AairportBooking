@@ -44,7 +44,8 @@ namespace AirportBooking.Menu
                 Console.WriteLine("Passenger ID does not exist. Exiting...");
                 return; // Exit if ID doesn't exist
             }
-            PassengerMenuHelper passengerMenuHelper = new PassengerMenuHelper(passengerId);
+            PassengerBookingMenuHelper passengerBookingMenuHelper = new PassengerBookingMenuHelper(passengerId);
+            PassengerFlightSearchMenuHelper passengerFlightSearchMenuHelper = new PassengerFlightSearchMenuHelper(passengerId);
 
             while (true)
             {
@@ -63,25 +64,25 @@ namespace AirportBooking.Menu
                 switch (choice)
                 {
                     case "1":
-                        passengerMenuHelper.BookFlight();
+                        passengerBookingMenuHelper.BookFlight();
                         break;
                     case "2":
-                        passengerMenuHelper.ModifyBooking();
+                        passengerBookingMenuHelper.ModifyBooking();
                         break;
                     case "3":
-                        passengerMenuHelper.CancelBooking();
+                        passengerBookingMenuHelper.CancelBooking();
                         break;
                     case "4":
-                        passengerMenuHelper.ViewBookings();
+                        passengerBookingMenuHelper.ViewBookings();
                         break;
                     case "5":
-                        passengerMenuHelper.ViewAvailbleFlights();
+                        passengerBookingMenuHelper.ViewAvailbleFlights();
                         break;
                     case "6":
-                        passengerMenuHelper.SearchFlights();
+                        passengerFlightSearchMenuHelper.SearchFlights();
                         break;
                     case "0":
-                        passengerMenuHelper.writeBookingsToFile();
+                        passengerBookingMenuHelper.writeBookingsToFile();
                         return;
                     default:
                         Console.WriteLine("Invalid option. Returning to main menu.");
