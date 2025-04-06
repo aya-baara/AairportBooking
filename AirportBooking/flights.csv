@@ -1,0 +1,6 @@
+FlightId,Airline,DepartureCountry,DestinationCountry,DepartureAirport,ArrivalAirport,DepartureDate,ArrivalDate,AvailableSeats,BusinessPrice,FirstClassPrice,EconomyPrice
+101,Qatar Airways,Qatar,USA,DOH,JFK,2025-12-15T08:30:00,2024-12-15T20:30:00,250,1200.50,1800.75,600.25
+102,Emirates,UAE,UK,DXB,LHR,2025-11-10T10:00:00,2024-11-10T14:30:00,280,1100.00,1700.00,550.00
+103,Turkish Airlines,Turkey,Germany,IST,FRA,2025-10-05T15:15:00,2024-10-05T17:45:00,200,900.99,1400.50,400.75
+104,Lufthansa,Germany,Canada,FRA,YYZ,2025-01-20T13:00:00,2025-01-20T18:00:00,220,1300.00,2000.00,700.00
+105,American Airlines,USA,France,JFK,CDG,2025-09-30T19:45:00,2024-10-01T08:20:00,275,1250.60,1900.80,650.40
